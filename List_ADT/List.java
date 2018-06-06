@@ -1,7 +1,7 @@
-/*
+/* * *
   This module was implemented by following an interface provided
   by Patrick Tantalo in CMPS 101 at UC Santa Cruz.
-*/
+* * */
 
 class List{
 
@@ -41,7 +41,7 @@ class List{
 		this.length = 0;
 	}
 
-	// Accessor Functions
+	/* * Accessor Functions * */
 	int length(){
 		return this.length;
 	}
@@ -75,6 +75,7 @@ class List{
 		return -1;
 	}
 
+	// Overrides super class Object's equals method.
 	boolean equals(List L){
 		if(this.length() != L.length()){
 			return false;
@@ -95,13 +96,16 @@ class List{
 		return true;
 	}
 
-	//Manipulation procedures
+	/* * Manipulation procedures * */
+
+	// Removes all elements in the list
 	void clear(){
 		while(this.first!=null){
 			deleteFirst();
 		}
 	}
 
+	// Moves the cursor to the first element in the list.
 	void moveFirst(){
 		if(this.length() > 0){
 			this.current = first;
@@ -109,6 +113,7 @@ class List{
 		}
 	}
 
+	//  Moves the cursor to the last element in the list.
 	void moveLast(){
 		if(this.length() > 0){
 			this.current = last;
@@ -116,6 +121,7 @@ class List{
 		}
 	}
 
+	// Moves the current pointer to the previous element
 	void movePrev(){
 		if(this.current != null && this.current != this.first){
 			this.current = this.current.prev;
@@ -126,6 +132,7 @@ class List{
 		}
 	}
 
+	// Moves the current pointer to the following element
 	void moveNext(){
 		if(this.current != null && this.current != this.last){
 			this.current = this.current.next;
@@ -135,6 +142,7 @@ class List{
 			index = -1;
 		}
 	}
+
 
 	void prepend(int data){
 		if(this.length() == 0){
@@ -281,6 +289,7 @@ class List{
 
 	}
 
+	// Overrides Object's toString method
 	public String toString(){
 		StringBuilder str = new StringBuilder();
 		if(this.length() == 0){
@@ -298,6 +307,7 @@ class List{
 		return str.toString();
 	}
 
+	// Returns an indentical list of values as the original
 	List copy(){
 		List list = new List();
 		Node tmp = this.current;
@@ -309,6 +319,7 @@ class List{
 		return list;
 	}
 
+	// Returns a concatenation of the two lists leaving the orginals unchanged
 	List concat(List L){
 		List mylist = new List();
 		Node tmp = this.first;
