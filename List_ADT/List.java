@@ -1,30 +1,38 @@
+/*
+  This module was implemented by following an interface provided
+  by Patrick Tantalo in CMPS 101 at UC Santa Cruz.
+*/
+
 class List{
 
 	// Node class used for the list elements
 	private class Node{
-
 		int data;
 		Node prev;
 		Node next;
-
+		// Constructor
 		Node(int data){
 			this.data = data;
 			this.next = null;
 			this.prev = null;
 		}
-
 		public String toString(){
 			return String.valueOf(data);
 		}
 	}
 
-	// List variables
+	/* Doubly linked list variables, pointers to the first and last 
+	   element of the list and a cursor element that can point to any
+	   element in the list. Index provides the position of where the
+	   current element points.
+	*/
 	Node first;
-	Node current;
 	Node last;
+	Node current;
 	int length;
 	int index;
 
+	// Constructor
 	List(){
 		this.first = null;
 		this.last = null;
@@ -37,6 +45,7 @@ class List{
 	int length(){
 		return this.length;
 	}
+
 
 	int index(){
 		if(this.current != null){
@@ -162,6 +171,8 @@ class List{
 		}
 	}
 
+	// Pre: length > 0 and index be defined.
+	// Post: 
 	void insertBefore(int data){
 		if(!(this.length() > 0 && this.index() >= 0)){
 			throw new RuntimeException("Empty list or invalid index.");
